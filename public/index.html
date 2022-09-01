@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INVENTORY</title>
+    <link
+      rel="shortcut icon"
+      href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAABmJLR0QA/wD/AP+gvaeTAAABp0lEQVR4nO3bQW7CMBCF4WdyBnqfco0gFSq1lypQCbhGORT7ZLoAKoIS14kBJ9H/7Qi2M/HsZjQSAAAAAAAAAAAAAGCsXOjC2e74JWkpKZOsZkXds4bnLnL/6VkhaXOYTz8bNnrN9setzHLJJn9nOrt6n5XOlfuf/OWtbv/r7rhysoVkWXWvFXL2fcinHyFxTFrEfL783sgkvXfebcrl//6JmZs3/emkhervI5NpGRpGmwT06fIvYmIK+XbfGt+7g+NqkwA8AAlIjAQk1iYBxcOi6C4mpjJyje/dwXEFJ8BJ6zYHP0Fh0qrrZpN28l9wKbmt54CN6u+jcKZ117gAAAAAjF9wP+BU/9a5/n1xW6u/+l2p+XvWyQo5BdfP72Vw/QBP/TtWq/r53dAPeNrZTegHgAQkRwIS60s/IEWZe1j9AE/9O1aS+jn9AAAAAACpMB8wlH6AmA+oGFs/oCvmAxCHBCRGAhLrSz+gK+YDEmI+AAAAAMAgMR8wlH4A8wFVY+sHMB+ANEhAYiQgsb70A5gP+BfzAbcH0A8AAAAAAAAAAAAAAHj9AtpvDA4hmMwHAAAAAElFTkSuQmCC"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./build/tailwind.css" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  </head>
+  <body class="bg-blue-50">
+    <!-- app bar -->
+    <div
+      class="navbar w-8/12 h-14 mx-auto my-5 p-2 bg-blue-100 rounded-lg shadow-md flex flex-row justify-around items-center"
+    >
+      <div class="w-auto text-slate-700 text-2xl font-bold">Inventory</div>
+      <div
+        class="w-auto text-slate-700 flex flex-row justify-center items-center"
+      >
+        <img
+          src="https://img.icons8.com/fluency-systems-regular/48/000000/product.png"
+          class="w-8 h-8 mx-2"
+        />
+        <span
+          class="w-7 h-7 flex justify-center items-center rounded-full border-slate-700 border-2"
+          id="products-number"
+          >0</span
+        >
+      </div>
+    </div>
+    <!-- app content -->
+    <div class="container mx-w-sm mx-auto w-8/12">
+      <!-- category form -->
+      <div class="hidden" id="category-form">
+        <h2 class="text-slate-700 text-xl my-3">Add New Category</h2>
+        <form class="bg-blue-100 p-5 rounded shadow-md flex flex-col gap-y-4">
+          <div>
+            <label for="category-title" class="text-slate-700 block">
+              Category title
+            </label>
+            <input
+              type="text"
+              name="category-title"
+              id="category-title"
+              class="p-2 rounded w-6/12 my-2 outline-none"
+              placeholder="title . . . "
+              required
+            />
+          </div>
+          <div>
+            <label for="category-description" class="text-slate-700 block">
+              Category description
+            </label>
+            <textarea
+              type="text"
+              name="category-description"
+              id="category-description"
+              class="p-2 rounded w-full my-2 outline-none"
+              required
+            ></textarea>
+          </div>
+          <div class="w-full flex flex-row justify-around items-center">
+            <button
+              id="cancel-new-category-btn"
+              class="w-5/12 py-2 rounded text-slate-700 border-slate-700 border-2"
+              value="cancel-new-category"
+            >
+              Cancel
+            </button>
+            <button
+              id="add-new-category-btn"
+              class="w-5/12 py-2 rounded bg-slate-700 text-white"
+            >
+              Add New Category
+            </button>
+          </div>
+        </form>
+      </div>
+      <!-- product form -->
+      <div class="my-5">
+        <h2 class="text-slate-700 text-xl my-3">Add New Product</h2>
+        <form class="bg-blue-100 p-5 rounded shadow-md flex flex-col gap-y-4">
+          <div>
+            <label for="product-title" class="text-slate-700 block">
+              Product title
+            </label>
+            <input
+              type="text"
+              name="product-title"
+              id="product-title"
+              class="p-2 rounded w-6/12 my-2 outline-none text-slate-700"
+              placeholder="title . . . "
+            />
+          </div>
+          <div>
+            <label for="product-quantity" class="text-slate-700 block">
+              Quantity
+            </label>
+            <input
+              type="number"
+              name="quantity"
+              id="product-quantity"
+              class="p-2 rounded w-6/12 my-2 outline-none text-slate-700"
+              min="0"
+            />
+          </div>
+          <div>
+            <label for="category" class="text-slate-700 block">
+              Category
+            </label>
+            <select
+              name="category"
+              id="category-list"
+              class="w-full rounded text-slate-700"
+            >
+              <option
+                value="newCategory"
+                class="rounded py-2 text-slate-700 hover:bg-slate-700 hover:text-white"
+              >
+                + add new category
+              </option>
+            </select>
+          </div>
+          <button
+            id="add-new-product-btn"
+            class="w-12/12 py-2 rounded bg-slate-700 text-white"
+          >
+            Add New Product
+          </button>
+          <div
+            id="update-btns-section"
+            class="hidden w-full flex flex-row justify-around items-center"
+          >
+            <button
+              id="cancel-update-product-btn"
+              class="w-5/12 py-2 rounded text-slate-700 border-slate-700 border-2"
+              value="cancel-new-category"
+            >
+              Cancel
+            </button>
+            <button
+              id="update-product-btn"
+              class="w-5/12 py-2 rounded bg-slate-700 text-white"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- product list -->
+      <div class="my-10">
+        <h2 class="text-slate-700 text-xl my-3">Product List</h2>
+        <!-- search box -->
+        <input
+          type="search"
+          name="search-input"
+          id="search-input"
+          placeholder="search . . ."
+          class="w-full p-2 bg-transparent border-slate-700 border-2 rounded text-slate-700"
+        />
+        <!-- sort options -->
+        <div class="w-full">
+          <select
+            name="sort"
+            id="sort-products"
+            class="w-1/4 bg-transparent my-5 rounded p-2 border-slate-700 border-2 text-slate-700"
+          >
+            <option value="newest" class="bg-blue-50 p-2 rounded" selected>
+              newest
+            </option>
+            <option value="oldest" class="bg-blue-50 p-2 rounded">
+              oldest
+            </option>
+          </select>
+        </div>
+        <div id="products-list" class="h-96 overflow-y-auto"></div>
+        <!-- hidden products sample for tailwind -->
+        <div
+          class="hidden flex justify-between items-center my-5 bg-blue-100 p-2 rounded"
+        >
+          <span class="text-slate-700"></span>
+          <span class="text-slate-600 text-sm"></span>
+          <div class="flex justify-center items-center gap-x-4">
+            <span class="text-sm text-slate-700"></span>
+            <span
+              class="text-sm bg-transparent px-2 border-slate-700 border-2 rounded-full text-slate-700"
+            ></span>
+            <span
+              class="text-sm w-10 h-10 text-white bg-slate-700 rounded-full p-2 flex justify-center items-center"
+            ></span>
+            <button
+              data-id="${product.id}"
+              class="w-10 bg-red-600 bg-cover bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABmJLR0QA/wD/AP+gvaeTAAACzklEQVR4nO2az0tUURTHP+e9mTSphQtLRYOKAmlRULRRg1YhRjv/jtpEP2jRolW0aNn/4CZKlFklmAhB0LbMhVk4ZmBhZjM932kxSkYxzvTOu17pfjazue/7zv1yzrvn3rkQCAQCgUAg8J8iLl6yfKW/O1G5gzIItO0Q0RopU4VE7nWUphbzji13A5YvDXYlRX0B9DT56EKcFs4fGp8s5xHXFoU8xQGSIrf5NfnXCgv1xgscAU4CvUmU3AKu5hlf7gZA2g8Cwlxna9cpGR3dqDdaR0bi8vriG+CYQH/e0UV5vwCVls3fjztNHqA2RpZqz7A/3+BcGOA5DX8E54cH2ovCM4HTeQaUFYFX64XCxaOPJz83Mr7hDGgl6vN98gAKZ9qSal+j4xvOAAUpXx68LqLH/y00N6jK286xqQcCutuxBAKBgPdk3gzNDg21HIhWr1kE0yxf04MPT0xMVLJoZDagtjwOrEH+betvCD86zz5vlbukWWQyt8ICqvA+q07TKEtZJw9GewGBdxY6TaGYnBNYbYbcGyCYnBbtWQMEjzJAROue8uSBqvqTASK7UAJE/mTAhqbuM0DUHwOg6jwDIvGoBLqfvvwGfLLQahSNiz5lAOB4JUiKlSULHTMDHDdDK72jM+sWQmYGqMulUG2aILAsAY3cGWC0AoBpCaTOSkCI/MsAQZ0ZYNUDgKEBVYcGgIcG9JybWQSqVnr1UB8/gpuHEx+s9OoRGe0DalqWOFoKNfYwA8BdM5R8T/zMgNSNAZWe0syKlZhtCWj96y9GlC3/+NyLJWB6c8zWAM2/F7A6C9zC1IA4lnlLvb+hRqfBW5ga0PFkehXhi6Xmn4i/GQCAMmeuuZ00Nc0ycwMUKVlrbmMj1qKpvrkBlUJ8X2HWWhcA0ZvWV2dzuSs8PzzQvi/iBioXQA9nlKsCs6CPusamxy3iCwQCgUAgEAgAPwEb0Nf+nkKeKgAAAABJRU5ErkJggg==')]"
+            ></button>
+            <button
+              class="edit-product-btn w-7 h-7 p-2 bg-cover bg-[url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABv0lEQVRoge2YvU7DMBRGv1sQMxMjA2rYmBqJkTeAp0ClzBU/U9MJEOyBt+ARWCtaBsZmY6MTG2JozeCmqpw02ImT64qc8dr39nyy4kQFamr+N8QtsEzraXxIgroQOAJhG8AHCTw3NjfuB6d7n2k9zgTww/EFiG4ANNQ1AiYzEsej9v4gZY0fP4wCEHpZewiY/Ag6eO80J8v1RNqq0ZEHAAHsbBG6ap09gBniRK2wBxh2vAACfc3tu2qBPQBgFOJLLVQewA+jwA+jQK1rhSDxopYqDbB4YAm9HCGms2njQS1WFiBx25iGIHH9dt4cJcq2RdPIuioJuHs9867UeusxuiTgdr4pGLa91JMpPYDWPS/QH3a8xGnEJ5S2FlNqAN2X1Fwk9SQ0+srBRH5JxjhEKQHyyMeYhrB+CxWRBwBB+DbZb/UEispn3TarWyzBIS/bLMAlL1sLwikv2wvALS9H5MQFeTkmB67Iy1GGuCQvxxngmrwcqYmL8nKsBq7Ky9F/4LK8HJ+B6/LyJ1awDvJA1uf0GsgDZfwrUaE8YDtAxfKAzQAM8oCtAEzygI0AjPJA0QDM8kCRAA7I19TU1PDzCwhOykQaWlLQAAAAAElFTkSuQmCC')]"
+              data-product-id="${product.id}"
+            ></button>
+          </div>
+        </div>
+        <!-- ///////// -->
+      </div>
+    </div>
+
+    <script src="/src/js/app.js" type="module"></script>
+  </body>
+</html>
